@@ -1,8 +1,8 @@
 /* eslint no-console: 0 */
-const electrician = require('..');
+const magician = require('..');
 
 // COMPOSE SYSTEM
-const system = electrician.system({
+const system = magician.system({
   A: {
     start: () => {
       console.log('Starting: Component A');

@@ -1,4 +1,4 @@
-const debug = require('debug')('electrician');
+const debug = require('debug')('magician');
 const Toposort = require('toposort-class');
 const functionArguments = require('fn-args');
 

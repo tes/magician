@@ -1,12 +1,12 @@
 {
-  "name": "electrician",
-  "version": "1.0.7",
+  "name": "magician",
+  "version": "0.0.1",
   "description": "Wire components into systems",
   "license": "MIT",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tes/electrician.git"
+    "url": "https://github.com/tes/magician.git"
   },
   "scripts": {
     "lint": "eslint .",

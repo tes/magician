@@ -1,18 +1,18 @@
 const expect = require('expect.js');
 
-const electrician = require('..');
+const magician = require('..');
 
 const pause = () => new Promise((resolve) => setTimeout(() => resolve(), 10));
 
-describe('Electrician', () => {
+describe('Magician', () => {
   it('creates an empty system', () => {
-    expect(electrician.system({})).to.be.an('object');
+    expect(magician.system({})).to.be.an('object');
   });
 });
 
 describe('System', () => {
   it('has start/stop methods', () => {
-    const system = electrician.system({});
+    const system = magician.system({});
 
     expect(system.start).to.be.a(Function);
     expect(system.stop).to.be.a(Function);
@@ -26,7 +26,7 @@ describe('System', () => {
       },
     };
 
-    const system = electrician.system({ comp });
+    const system = magician.system({ comp });
     await system.start();
 
     expect(started).to.be(true);
@@ -41,7 +41,7 @@ describe('System', () => {
       },
     };
 
-    const system = electrician.system({ comp });
+    const system = magician.system({ comp });
     await system.start();
 
     expect(started).to.be(true);
@@ -59,7 +59,7 @@ describe('System', () => {
       start: () => ({ a: 1 }),
     };
 
-    const system = electrician.system({ comp, another });
+    const system = magician.system({ comp, another });
     const context = await system.start();
 
     expect(context.comp).to.eql(['something', 'useful']);
@@ -78,7 +78,7 @@ describe('System', () => {
         started[1] = true;
       },
     };
-    const system = electrician.system({ one, two });
+    const system = magician.system({ one, two });
     await system.start();
 
     expect(started).to.eql([true, true]);
@@ -103,7 +103,7 @@ describe('System', () => {
       },
     };
 
-    const system = electrician.system({ one, two, three });
+    const system = magician.system({ one, two, three });
     await system.start();
 
     expect(startSequence).to.eql(['two', 'one', 'three']);
@@ -119,7 +119,7 @@ describe('System', () => {
       },
     };
 
-    const system = electrician.system({ comp });
+    const system = magician.system({ comp });
     await system.start();
     await system.stop();
 
@@ -137,7 +137,7 @@ describe('System', () => {
       },
     };
 
-    const system = electrician.system({ comp });
+    const system = magician.system({ comp });
     await system.start();
     await system.stop();
 
@@ -153,7 +153,7 @@ describe('System', () => {
       },
     };
 
-    const system = electrician.system({ comp });
+    const system = magician.system({ comp });
     await system.start();
 
     try {
@@ -171,7 +171,7 @@ describe('System', () => {
       },
     };
 
-    const system = electrician.system({ comp });
+    const system = magician.system({ comp });
 
     try {
       await system.start();
@@ -197,7 +197,7 @@ describe('System', () => {
         stopped[1] = true;
       },
     };
-    const system = electrician.system({ one, two });
+    const system = magician.system({ one, two });
     await system.start();
     await system.stop();
 
@@ -229,7 +229,7 @@ describe('System', () => {
       },
     };
 
-    const system = electrician.system({ one, two, three });
+    const system = magician.system({ one, two, three });
     await system.start();
     await system.stop();
 
@@ -237,7 +237,7 @@ describe('System', () => {
   });
 
   it('does not attempt to start components without start method', async () => {
-    const system = electrician.system({ comp: {} });
+    const system = magician.system({ comp: {} });
     const ctx = await system.start();
 
     expect(ctx.comp).to.not.be.ok();
@@ -249,7 +249,7 @@ describe('System', () => {
       },
     };
 
-    const system = electrician.system({ comp });
+    const system = magician.system({ comp });
     await system.start();
     try {
       await system.stop();
@@ -259,7 +259,7 @@ describe('System', () => {
   });
 
   it('returns error when wiring cyclical dependencies on start', async () => {
-    const system = electrician.system({
+    const system = magician.system({
       A: {
         start: async (B) => {
           await pause(B);
@@ -287,7 +287,7 @@ describe('System', () => {
       },
     };
 
-    const system = electrician.system({ comp });
+    const system = magician.system({ comp });
     try {
       await system.start();
       throw new Error('this should not be reached');
