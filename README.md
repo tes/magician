@@ -1,0 +1,2 @@
+# magician
+inspired by electrician
