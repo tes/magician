@@ -1,0 +1,37 @@
+{
+  "name": "electrician",
+  "version": "1.0.7",
+  "description": "Wire components into systems",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tes/electrician.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "nyc mocha",
+    "coverage": "istanbul cover --include-all-sources true -x examples/** _mocha && istanbul check-coverage --statements 100"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
+  "dependencies": {
+    "debug": "^3.1.0",
+    "fn-args": "^5.0.0",
+    "toposort-class": "^1.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.15.1",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "expect.js": "^0.3.1",
+    "mocha": "^6.2.1",
+    "nyc": "^14.1.1",
+    "pre-commit": "^1.1.2"
+  }
+}
